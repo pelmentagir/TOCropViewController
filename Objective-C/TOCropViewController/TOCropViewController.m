@@ -28,7 +28,7 @@
 #import "TOCroppedImageAttributes.h"
 
 static const CGFloat kTOCropViewControllerTitleTopPadding = 14.0f;
-static const CGFloat kTOCropViewControllerToolbarHeight = 44.0f;
+static const CGFloat kTOCropViewControllerToolbarHeight = 64.0f;
 
 @interface TOCropViewController () <UIActionSheetDelegate, UIViewControllerTransitioningDelegate, TOCropViewDelegate>
 
@@ -1087,6 +1087,7 @@ static const CGFloat kTOCropViewControllerToolbarHeight = 44.0f;
         _cropView = [[TOCropView alloc] initWithCroppingStyle:self.croppingStyle image:self.image];
         _cropView.delegate = self;
         _cropView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+        _cropView.translucencyAlwaysHidden = YES
         [self.view addSubview:_cropView];
     }
     return _cropView;

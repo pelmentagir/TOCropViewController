@@ -182,8 +182,8 @@
         
         // Work out the cancel button frame
         CGRect frame = CGRectZero;
-        frame.size.height = 44.0f;
-        frame.size.width = _showOnlyIcons ? 44.0f : MIN(self.frame.size.width / 3.0, self.cancelTextButton.frame.size.width);
+        frame.size.height = 64.0f;
+        frame.size.width = _showOnlyIcons ? 64.0f : MIN(self.frame.size.width / 3.0, self.cancelTextButton.frame.size.width);
 
         //If normal layout, place on the left side, else place on the right
         if (self.reverseContentLayout == NO) {
@@ -195,7 +195,7 @@
         (_showOnlyIcons ? self.cancelIconButton : self.cancelTextButton).frame = frame;
         
         // Work out the Done button frame
-        frame.size.width = _showOnlyIcons ? 44.0f : MIN(self.frame.size.width / 3.0, self.doneTextButton.frame.size.width);
+        frame.size.width = _showOnlyIcons ? 64.0f : MIN(self.frame.size.width / 3.0, self.doneTextButton.frame.size.width);
         
         if (self.reverseContentLayout == NO) {
             frame.origin.x = boundsSize.width - (frame.size.width + insetPadding);
@@ -216,13 +216,13 @@
             width = CGRectGetMinX((_showOnlyIcons ? self.cancelIconButton : self.cancelTextButton).frame) - CGRectGetMaxX((_showOnlyIcons ? self.doneIconButton : self.doneTextButton).frame);
         }
         
-        CGRect containerRect = CGRectIntegral((CGRect){x,frame.origin.y,width,44.0f});
+        CGRect containerRect = CGRectIntegral((CGRect){x,frame.origin.y,width,64.0f});
 
 #if TOCROPTOOLBAR_DEBUG_SHOWING_BUTTONS_CONTAINER_RECT
         containerView.frame = containerRect;
 #endif
         
-        CGSize buttonSize = (CGSize){44.0f,44.0f};
+        CGSize buttonSize = (CGSize){64.0f,64.0f};
         
         NSMutableArray *buttonsInOrderHorizontally = [NSMutableArray new];
         if (!self.rotateCounterclockwiseButtonHidden) {
@@ -244,23 +244,23 @@
     }
     else {
         CGRect frame = CGRectZero;
-        frame.size.height = 44.0f;
-        frame.size.width = 44.0f;
-        frame.origin.y = CGRectGetHeight(self.bounds) - 44.0f;
+        frame.size.height = 64.0f;
+        frame.size.width = 64.0f;
+        frame.origin.y = CGRectGetHeight(self.bounds) - 64.0f;
         self.cancelIconButton.frame = frame;
         
         frame.origin.y = self.statusBarHeightInset;
-        frame.size.width = 44.0f;
-        frame.size.height = 44.0f;
+        frame.size.width = 64.0f;
+        frame.size.height = 64.0f;
         self.doneIconButton.frame = frame;
         
-        CGRect containerRect = (CGRect){0,CGRectGetMaxY(self.doneIconButton.frame),44.0f,CGRectGetMinY(self.cancelIconButton.frame)-CGRectGetMaxY(self.doneIconButton.frame)};
+        CGRect containerRect = (CGRect){0,CGRectGetMaxY(self.doneIconButton.frame),64.0f,CGRectGetMinY(self.cancelIconButton.frame)-CGRectGetMaxY(self.doneIconButton.frame)};
         
 #if TOCROPTOOLBAR_DEBUG_SHOWING_BUTTONS_CONTAINER_RECT
         containerView.frame = containerRect;
 #endif
         
-        CGSize buttonSize = (CGSize){44.0f,44.0f};
+        CGSize buttonSize = (CGSize){64.0f,64.0f};
         
         NSMutableArray *buttonsInOrderVertically = [NSMutableArray new];
         if (!self.rotateCounterclockwiseButtonHidden) {

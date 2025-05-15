@@ -24,7 +24,7 @@
 #import "TOCropOverlayView.h"
 #import "TOCropScrollView.h"
 
-#define TOCROPVIEW_BACKGROUND_COLOR [UIColor colorWithWhite:0.12f alpha:1.0f]
+#define TOCROPVIEW_BACKGROUND_COLOR [UIColor blackColor]
 
 static const CGFloat kTOCropViewPadding = 14.0f;
 static const NSTimeInterval kTOCropTimerDuration = 0.8f;
@@ -1726,9 +1726,9 @@ typedef NS_ENUM(NSInteger, TOCropViewOverlayEdge) {
 - (CGRect)contentBounds
 {
     CGRect contentRect = CGRectZero;
-    contentRect.origin.x = self.cropViewPadding + self.cropRegionInsets.left;
+    contentRect.origin.x = self.cropRegionInsets.left;
     contentRect.origin.y = self.cropViewPadding + self.cropRegionInsets.top;
-    contentRect.size.width = CGRectGetWidth(self.bounds) - ((self.cropViewPadding * 2) + self.cropRegionInsets.left + self.cropRegionInsets.right);
+    contentRect.size.width = CGRectGetWidth(self.bounds) - (self.cropRegionInsets.left + self.cropRegionInsets.right);
     contentRect.size.height = CGRectGetHeight(self.bounds) - ((self.cropViewPadding * 2) + self.cropRegionInsets.top + self.cropRegionInsets.bottom);
     return contentRect;
 }
