@@ -1087,7 +1087,7 @@ static const CGFloat kTOCropViewControllerToolbarHeight = 64.0f;
         _cropView = [[TOCropView alloc] initWithCroppingStyle:self.croppingStyle image:self.image];
         _cropView.delegate = self;
         _cropView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-        _cropView.translucencyAlwaysHidden = YES
+        _cropView.translucencyAlwaysHidden = YES;
         [self.view addSubview:_cropView];
     }
     return _cropView;
