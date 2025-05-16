@@ -54,7 +54,7 @@
 
 - (void)setup {
     self.backgroundView = [[UIView alloc] initWithFrame:self.bounds];
-    self.backgroundView.backgroundColor = [UIColor colorWithWhite:0.12f alpha:1.0f];
+    self.backgroundView.backgroundColor = [UIColor blackColor];
     [self addSubview:self.backgroundView];
     
     // On iOS 9, we can use the new layout features to determine whether we're in an 'Arabic' style language mode
@@ -103,12 +103,14 @@
                                                                     nil)
                        forState:UIControlStateNormal];
     [_cancelTextButton.titleLabel setFont:[UIFont systemFontOfSize:17.0f]];
+    [_cancelTextButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [_cancelTextButton addTarget:self action:@selector(buttonTapped:) forControlEvents:UIControlEventTouchUpInside];
     [_cancelTextButton sizeToFit];
     [self addSubview:_cancelTextButton];
     
     _cancelIconButton = [UIButton buttonWithType:UIButtonTypeSystem];
     [_cancelIconButton setImage:[TOCropToolbar cancelImage] forState:UIControlStateNormal];
+    [_cancelIconButton setTintColor:[UIColor whiteColor]];
     [_cancelIconButton addTarget:self action:@selector(buttonTapped:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:_cancelIconButton];
     
@@ -436,7 +438,11 @@
 }
 
 - (void)setCancelButtonColor:(UIColor *)cancelButtonColor {
-    // Default color is app tint color
+    // Default color is white
+    if (cancelButtonColor == nil) {
+        cancelButtonColor = [UIColor whiteColor];
+    }
+    
     if (cancelButtonColor == _cancelButtonColor) { return; }
     _cancelButtonColor = cancelButtonColor;
     [_cancelTextButton setTitleColor:_cancelButtonColor forState:UIControlStateNormal];
@@ -445,9 +451,9 @@
 }
 
 - (void)setDoneButtonColor:(UIColor *)doneButtonColor {
-    // Set the default color when nil is specified
+    // Set the default color to white when nil is specified
     if (doneButtonColor == nil) {
-        doneButtonColor = [UIColor colorWithRed:1.0f green:0.8f blue:0.0f alpha:1.0f];
+        doneButtonColor = [UIColor whiteColor];
     }
 
     if (doneButtonColor == _doneButtonColor) { return; }
@@ -510,7 +516,7 @@
 + (UIImage *)rotateCCWImage
 {
     if (@available(iOS 13.0, *)) {
-        return [[UIImage systemImageNamed:@"rotate.left.fill"
+        return [[UIImage systemImageNamed:@"rotate.left"
                         withConfiguration:[UIImageSymbolConfiguration configurationWithWeight:UIImageSymbolWeightSemibold]]
                 imageWithBaselineOffsetFromBottom:4];
     }
@@ -544,7 +550,7 @@
 + (UIImage *)rotateCWImage
 {
     if (@available(iOS 13.0, *)) {
-        return [[UIImage systemImageNamed:@"rotate.right.fill"
+        return [[UIImage systemImageNamed:@"rotate.right"
                         withConfiguration:[UIImageSymbolConfiguration configurationWithWeight:UIImageSymbolWeightSemibold]]
                 imageWithBaselineOffsetFromBottom:4];
     }
